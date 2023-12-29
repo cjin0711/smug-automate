@@ -23,30 +23,6 @@ password = input("Password: ")
 
 #loads login screen
 driver.get("https://secure.smugmug.com/login")
-'''
-
-class Smug(driver):
-    def __init__(self):
-        #super(Smug, self).__init__()
-        pass
-
-    def login(self, user, password):
-        self.user = user
-        self.password = password
-
-        #fills in username
-        self.find_element(By.NAME, 'username').send_keys("MY NAME JEFF")
-
-        #fills in password
-        self.find_element(By.NAME, 'password').send_keys("EASY MONEY")
-
-        #clicks login
-        login = self.find_element(By.CLASS_NAME, 'button[]')
-
-bot = Smug()
-bot.login("abc", 123)
-
-'''
 
 driver.find_element(By.NAME, 'username').send_keys(user)
 driver.find_element(By.NAME, 'password').send_keys(password)
