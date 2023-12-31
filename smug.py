@@ -3,7 +3,10 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from assemble_files import files
 import time
+
+
 
 options = webdriver.ChromeOptions()
 
@@ -11,15 +14,13 @@ options = webdriver.ChromeOptions()
 options.binary_location = "C:\Program Files\BraveSoftware\Brave-Browser\Application\\brave.exe"
 
 #detaches browser tab from program to prevent premature tab closure
-options.add_experimental_option("detach",True)
+options.add_experimental_option("detach", True)
 
 driver = webdriver.Chrome(options = options)
-
 
 #user and pass
 user = input("Username: ")
 password = input("Password: ")
-
 
 #retrieve login screen
 driver.get("https://secure.smugmug.com/login")
@@ -51,11 +52,33 @@ desc = wait.until(EC.presence_of_element_located((By.NAME, "Description")))
 desc.send_keys("Test description for Gallery")
 '''
 
+time.sleep(1)
+
+#gallery creation 
+driver.find_element(By.CSS_SELECTOR, "button[data-value='save']").click()
+
 time.sleep(2)
 
-#gallery creation [needs fixing]
-create = wait.until(EC.presence_of_element_located((By.ID, "yui_3_8_0_1_1703959192564_1699")))
-create.click()
+upload = driver.find_element(By.CSS_SELECTOR, "input[accept='.heic,.heif,.jpg,.jpeg,.png,.gif,.3gp,.3g2,.3gp2,.avi,.h264,.m4v,.mov,.mp4,.mpeg,.mts,.ogg,.ogv,.qt,.webm,.wmv,image/heic,image/heif,image/jpeg,image/png,image/gif,video/3gpp,video/3gpp2,video/x-msvideo,video/h264,video/mp4,video/quicktime,video/mpeg,video/mp2t,video/ogg,video/webm,video/x-ms-wmv']")
+
+#[ISSUE OF DUPLICATE FILE UPLOAD]
+for f in files:
+    upload.send_keys(f)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
