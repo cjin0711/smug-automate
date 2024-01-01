@@ -23,15 +23,9 @@ def assemble(elapsed_time):
             if time_interval < elapsed_time:
                 files.append(file_path)
 
+    if not files:
+        raise Exception("No files found.")
+    
     #resolution to duplicate file upload
     return '\n'.join(files)
 
-
-
-
-
-
-
-        
-
-        

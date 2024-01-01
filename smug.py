@@ -22,6 +22,9 @@ options.binary_location = "C:\Program Files\BraveSoftware\Brave-Browser\Applicat
 #detaches browser tab from program to prevent premature tab closure
 options.add_experimental_option("detach", True)
 
+#headless browser option
+#options.add_argument("--headless=new")
+
 driver = webdriver.Chrome(options = options)
 
 #retrieve login screen
@@ -46,11 +49,14 @@ new_gallery.click()
 #gallery name (find by ID doesn't work -> find by NAME)
 title = wait.until(EC.presence_of_element_located((By.NAME, "Name")))
 title.send_keys(sys.argv[1])
-'''
+
+#allows for field completion check (headless)
+#driver.save_screenshot("gallery.png")
+
 #gallery description
-desc = wait.until(EC.presence_of_element_located((By.NAME, "Description")))
-desc.send_keys("Test description for Gallery")
-'''
+#desc = wait.until(EC.presence_of_element_located((By.NAME, "Description")))
+#desc.send_keys("Test description for Gallery")
+
 time.sleep(1)
 #gallery creation 
 driver.find_element(By.CSS_SELECTOR, "button[data-value='save']").click()
@@ -63,39 +69,14 @@ str = assemble_files.assemble(var)
 upload = driver.find_element(By.CSS_SELECTOR, "input[accept='.heic,.heif,.jpg,.jpeg,.png,.gif,.3gp,.3g2,.3gp2,.avi,.h264,.m4v,.mov,.mp4,.mpeg,.mts,.ogg,.ogv,.qt,.webm,.wmv,image/heic,image/heif,image/jpeg,image/png,image/gif,video/3gpp,video/3gpp2,video/x-msvideo,video/h264,video/mp4,video/quicktime,video/mpeg,video/mp2t,video/ogg,video/webm,video/x-ms-wmv']")
 upload.send_keys(str)
 
+#checks for upload completion
+unfinished = True
+while unfinished:
+    h1 = driver.find_elements(By.TAG_NAME, "h1")
+    for f in h1:
+        if "Hooray!" in f.text:
+            unfinished = False
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
+#close upload screen
+driver.find_element(By.XPATH, "//button[@data-testid='uploader_close_button']").click()
 
