@@ -5,11 +5,7 @@ smug-automate is an automation tool for creating new galleries on the [SmugMug](
 
 This tool is powered by the Selenium Webdriver module.
 
-Formats supported: .heic,.heif,.jpg,.jpeg,.png,.gif,.3gp,.3g2,.3gp2,.avi,.h264,.m4v,
-                   .mov,.mp4,.mpeg,.mts,.ogg,.ogv,.qt,.webm,.wmv,image/heic,image/heif,
-                   image/jpeg,image/png,image/gif,video/3gpp,video/3gpp2,video/x-msvideo,
-                   video/h264,video/mp4,video/quicktime,video/mpeg,video/mp2t,video/ogg,
-                   video/webm,video/x-ms-wmv
+Formats supported: `.heic, .heif, .jpg, .jpeg, .png, .gif, .3gp, .3g2, .3gp2, .avi, .h264, .m4v, .mov, .mp4, .mpeg, .mts, .ogg, .ogv, .qt, .webm, .wmv, image/heic, image/heif, image/jpeg, image/png, image/gif, video/3gpp, video/3gpp2, video/x-msvideo, video/h264, video/mp4, video/quicktime, video/mpeg, video/mp2t, video/ogg, video/webm, video/x-ms-wmv`
 
 ## Local Usage
 Python should be installed onto your local system.
@@ -27,7 +23,6 @@ pip install selenium
 3. Select browser for webdriver (defaulted to Brave browser). To use Chrome browser instead, delete or comment out in `smug.py`:
 ```
 options.binary_location = "C:\Program Files\BraveSoftware\Brave-Browser\Application\\brave.exe"
-
 ```
 
 4. Make sure that all files to be uploaded are in your 'Downloads' directory.
