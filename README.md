@@ -49,3 +49,6 @@ py smug.py [arg1] [arg2(optional)]
   - Correct ✓: download files for gallery -> run `smug.py` -> free to download other files
   - Incorrect ✗: download files for gallery -> download/modify irrelevant files -> run `smug.py`
 
+## Next Step
+* SmugMug browser extention that downloads selected files directly from the source (e.g. Email, Website)
+
